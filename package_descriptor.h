@@ -1,5 +1,3 @@
-#include "package_descriptor.h"
-
 void package_descriptor::show_info()
 {
 	cout << "Адрес отправителя: " << m_address_sender << endl;
