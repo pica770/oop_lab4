@@ -1,5 +1,3 @@
-#include "package_descriptor_hypertext.h"
-
 void package_descriptor_hypertext::show_info()
 {
 	package_descriptor::show_info();
