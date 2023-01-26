@@ -1,5 +1,3 @@
-#include "package_descriptor_file.h"
-
 void package_descriptor_file::show_info()
 {
 	package_descriptor::show_info();
