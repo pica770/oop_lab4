@@ -1,6 +1,5 @@
 #pragma once
 #include "package_descriptor.h"
-#include "type_package.h"
 #include <vector>
 #include <set>
 
