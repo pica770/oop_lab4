@@ -1,5 +1,3 @@
-#include "package_descriptor_mail.h"
-
 void package_descriptor_mail::show_info()
 {
 	package_descriptor::show_info();
