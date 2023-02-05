@@ -1,4 +1,19 @@
-void descriptor_message::show_info()
+#pragma once
+#include "descriptor.h"
+class descriptor_message :
+    public descriptor
 {
-	cout << "Длина сообщения: " << m_len_message << ", Сообщение: " << m_message << endl;
-}
+private:
+    unsigned int m_len_message;
+    char* m_message;
+
+public:
+    descriptor_message(unsigned int len_message, char* message) : m_len_message(len_message), m_message(message){}
+
+    char* get_message() {
+        return m_message;
+    }
+
+    void show_info() override;
+};
+
