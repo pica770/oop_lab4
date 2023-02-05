@@ -1,4 +1,5 @@
 #pragma once
+#include "descriptor.h"
 #include <string>
 #include "type_protocol.h"
 using namespace std;
@@ -23,4 +24,5 @@ public:
 
     void show_info() override;
 };
+
 
