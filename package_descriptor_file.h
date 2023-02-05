@@ -1,15 +1,39 @@
-void package_descriptor_file::show_info()
-{
-	package_descriptor::show_info();
-	string type_c = m_code == type_code::ACII ? "ASCII" : "BIN";
-	string type_i = m_info_type == info_type::control ? "управляющая" : "данные";
-	cout << "Тип кода: " << type_c << endl;
-	cout << "Тип информации: " << type_i << endl;
+#pragma once
+#include "package_descriptor.h"
+#include "type_code.h"
+#include "info_type.h"
+#include "package_descriptor_hypertext.h"
+#include "descriptor_link.h"
 
-}
+class package_descriptor_hypertext;
 
-package_descriptor_hypertext* package_descriptor_file::convert(int count_links, descriptor_link* links)
+class package_descriptor_file :
+    public package_descriptor
 {
-	return new package_descriptor_hypertext(get_address_sender(), get_address_recipient(), get_descriptor_message(), 
-		get_type_code(), get_info_type(), count_links, links);
-}
+private:
+    type_code m_code;
+    info_type m_info_type;
+
+public:
+    package_descriptor_file(string address_sender, string address_recipient, descriptor_message* descriptor_message,
+        type_code code, info_type info_type) : package_descriptor(address_sender, address_recipient, descriptor_message),
+        m_code(code), m_info_type(info_type) {}
+
+    type_code get_type_code() {
+        return m_code;
+    }
+
+    info_type get_info_type() {
+        return m_info_type;
+    }
+
+    type_package get_type_package() override {
+        return type_package::file;
+    }
+
+    void show_info() override;
+
+    package_descriptor_hypertext* convert(int count_links, descriptor_link** links);
+};
+
+
