@@ -7,9 +7,10 @@ void server::add(package_descriptor* package)
 
 package_descriptor* server::find_package(string address_recipient, type_package type)
 {
-	for (package_descriptor* package : m_packages) {
-		if (package->get_address_recipient() == address_recipient && package->get_type_package() == type) {
-			return package;
+	for (int i = 0; i < m_packages.count(); i++)
+	{
+		if (m_packages[i]->get_address_recipient() == address_recipient && m_packages[i]->get_type_package() == type) {
+			return m_packages[i];
 		}
 	}
 	return nullptr;
@@ -17,10 +18,10 @@ package_descriptor* server::find_package(string address_recipient, type_package 
 
 bool server::remove_package(string address_recipient, type_package type)
 {
-	for (int i = 0; i < m_packages.size(); i++)
+	for (int i = 0; i < m_packages.count(); i++)
 	{
 		if (m_packages[i]->get_address_recipient() == address_recipient && m_packages[i]->get_type_package() == type) {
-			m_packages.erase(m_packages.begin() + i);
+			m_packages.remove_at(i);
 			return true;
 		}
 	}
@@ -39,8 +40,8 @@ string server::get_address() const
 
 void server::show()
 {
-	for (package_descriptor* package : m_packages) {
-		package->show_info();
+	for (int i = 0; i < m_packages.count(); i++) {
+		m_packages[i]->show_info();
 		cout << endl;
 	}
 }
@@ -48,8 +49,8 @@ void server::show()
 void server::show_senders()
 {
 	set<string> senders;
-	for (package_descriptor* package : m_packages) {
-		senders.insert(package->get_address_sender());
+	for (int i = 0; i < m_packages.count(); i++) {
+		senders.insert(m_packages[i]->get_address_sender());
 	}
 
 	for (string s : senders) {
