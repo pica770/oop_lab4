@@ -3,13 +3,14 @@
 #include "type_package.h"
 #include <vector>
 #include <set>
+#include "my_vector.h"
 
 class server
 {
 private:
 	string m_name;
 	string m_address;
-	vector<package_descriptor*> m_packages;
+	my_vector<package_descriptor*> m_packages;
 
 public:
 	server(string name, string address) : m_name(name), m_address(address) {}
